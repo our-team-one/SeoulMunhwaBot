@@ -1,0 +1,454 @@
+{
+  "name": "test",
+  "intents": [
+    {
+      "intent": "인사",
+      "examples": [
+        {
+          "text": "안녕하세여"
+        },
+        {
+          "text": "안녕?"
+        },
+        {
+          "text": "하이"
+        },
+        {
+          "text": "안녕하세여여"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "문화공간",
+      "examples": [
+        {
+          "text": "문화공간 알려죠"
+        },
+        {
+          "text": "문화공간 알려죠죠"
+        },
+        {
+          "text": "송파구 문화공간 알려죠"
+        },
+        {
+          "text": "동작구 문화공간 알려죠"
+        },
+        {
+          "text": "강서구 문화공간 알려죠"
+        },
+        {
+          "text": "서대문구 문화공간 알려죠"
+        },
+        {
+          "text": "강남구 문화공간 알려죠"
+        }
+      ]
+    },
+    {
+      "intent": "top10",
+      "examples": [
+        {
+          "text": "서울시 탑텐 알려죠죠"
+        },
+        {
+          "text": "탑텐 알려죠"
+        },
+        {
+          "text": "서울시 탑텐 알려죠"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "위키",
+      "examples": [
+        {
+          "text": "위키야 알려죠"
+        },
+        {
+          "text": "위키백과에서 찾아져"
+        },
+        {
+          "text": "위키야 얼마야?"
+        },
+        {
+          "text": "위키에서 찾아죠"
+        },
+        {
+          "text": "위키에서 알려죠"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "위키",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "위키",
+          "synonyms": [
+            "위키백과"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "regionName",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "동작구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "강남구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서대문구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "강서구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "송파구",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-location",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "aa5bb023-6626-485d-b206-d19488a234be",
+  "webhooks": [
+    {
+      "url": "https://us-south.functions.cloud.ibm.com/api/v1/namespaces/comcomet%40naver.com_dev/actions/etri_wiki?blocking=true",
+      "name": "main_webhook",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Basic Nzk2NjJmMDMtMzgwZC00MDAxLWFkMjItMmJmMjA4MDUwZDE1OnI1NWJ6OE94QW5nWm53Nm5CSWJCb0p4a2w0QTliTDVGOEhLVU9UVkY5dkc4VGtBWFBBMUhYV0U2TEt5SWkwdDg="
+        }
+      ]
+    }
+  ],
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "title": "response_6_1570582099356",
+      "parent": "node_10_1570579992411",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1570582099356",
+      "previous_sibling": "response_1_1570582097681"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_1_1570582097681",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " top102중 2개정도?...아래 처럼 오케이? <? $webhook_result_3.response.result.message[1][0] ?><? $webhook_result_3.response.result.message[1][1] ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1570579992411",
+      "conditions": "$webhook_result_3",
+      "dialog_node": "response_1_1570582097681",
+      "previous_sibling": "slot_5_1570582098209"
+    },
+    {
+      "type": "slot",
+      "parent": "node_10_1570579992411",
+      "dialog_node": "slot_5_1570582098209"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1570104138930",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1570104138939",
+      "previous_sibling": "handler_4_1570104138939"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_2_1570104138930",
+      "event_name": "input",
+      "dialog_node": "handler_4_1570104138939"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_1_1570165594267",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "어느구 라구요?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1570164761684",
+      "conditions": "anything_else",
+      "dialog_node": "response_1_1570165594267",
+      "previous_sibling": "response_10_1570165592024"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_10_1570165592024",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " 문화공간은...아래 처럼 오케이? <? $webhook_result_2.response.result.message[1]>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1570164761684",
+      "conditions": "$webhook_result_2",
+      "dialog_node": "response_10_1570165592024",
+      "previous_sibling": "slot_1_1570166004105"
+    },
+    {
+      "type": "slot",
+      "parent": "node_6_1570164761684",
+      "dialog_node": "slot_1_1570166004105",
+      "previous_sibling": "handler_2_1570166003475"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_6_1570164761684",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1570166003475"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1570166004105",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1570166004114",
+      "previous_sibling": "handler_8_1570166004114"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_1_1570166004105",
+      "event_name": "input",
+      "dialog_node": "handler_8_1570166004114"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1570582098209",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1570582098222",
+      "previous_sibling": "handler_4_1570582098222"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_5_1570582098209",
+      "event_name": "input",
+      "dialog_node": "handler_4_1570582098222"
+    },
+    {
+      "type": "event_handler",
+      "parent": "Anything else",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1570104138248",
+      "previous_sibling": "response_9_1570109108130"
+    },
+    {
+      "type": "slot",
+      "parent": "Anything else",
+      "dialog_node": "slot_2_1570104138930",
+      "previous_sibling": "handler_1_1570104138248"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_9_1570109108130",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "연결이 안되네여  나중에 다시 시도하십시오."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Anything else",
+      "conditions": "anything_else",
+      "dialog_node": "response_9_1570109108130",
+      "previous_sibling": "response_4_1570113390737"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_4_1570113390737",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "위키에게 물어보니..  <? $webhook_result_1.response.result.message ?> "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Anything else",
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_4_1570113390737"
+    },
+    {
+      "type": "frame",
+      "title": "top10",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "gubun": "s"
+          },
+          "result_variable": "webhook_result_3"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#top10",
+      "dialog_node": "node_10_1570579992411",
+      "previous_sibling": "node_6_1570164761684"
+    },
+    {
+      "type": "frame",
+      "title": "wiki",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "wiki": "<? input.text ?>",
+            "gubun": "w"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": " #위키",
+      "dialog_node": "Anything else",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "frame",
+      "title": "mungong",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "wiki": "문화",
+            "gubun": "s",
+            "regionName": "@regionName"
+          },
+          "result_variable": "webhook_result_2"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#문화공간",
+      "dialog_node": "node_6_1570164761684",
+      "previous_sibling": "Anything else"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "나도 하이.."
+              },
+              {
+                "text": "안녕하신가?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": " #인사",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "aa5bb023-6626-485d-b206-d19488a234be",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
