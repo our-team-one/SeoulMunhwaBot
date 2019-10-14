@@ -1,0 +1,1452 @@
+{
+  "name": "what's bro",
+  "intents": [
+    {
+      "intent": "자기소개",
+      "examples": [
+        {
+          "text": "너 이름이 모야"
+        },
+        {
+          "text": "너 이름이 뭐니"
+        },
+        {
+          "text": "니 소개를 해줘"
+        },
+        {
+          "text": "니가 뭔데"
+        },
+        {
+          "text": "너 누구냐"
+        },
+        {
+          "text": "너는 누구야"
+        },
+        {
+          "text": "소개해줘"
+        },
+        {
+          "text": "자기소개"
+        },
+        {
+          "text": "너 자기소개 해봐"
+        },
+        {
+          "text": "너에 대해 소개해줘"
+        }
+      ],
+      "description": "자기소개를 해주는 인텐트"
+    },
+    {
+      "intent": "서울시축제행사",
+      "examples": [
+        {
+          "text": "행사 알려줘"
+        },
+        {
+          "text": "축제행사 알려줘"
+        },
+        {
+          "text": "축제 알려줘"
+        },
+        {
+          "text": "서울시 축제 알려줘"
+        },
+        {
+          "text": "서울시 행사 알려줘"
+        }
+      ],
+      "description": "서울시의 축제 행사를 나타내는 인텐트"
+    },
+    {
+      "intent": "서울시테마코스",
+      "examples": [
+        {
+          "text": "테마코스 줘봐"
+        },
+        {
+          "text": "서울시 테마코스 알려줘"
+        },
+        {
+          "text": "테마코스 알려줘"
+        },
+        {
+          "text": "서울시 테마코스 가져와"
+        },
+        {
+          "text": "테마코스 가져와봐"
+        }
+      ],
+      "description": "서울시의 테마 코스를 알려주는 인텐트"
+    },
+    {
+      "intent": "사용자인사",
+      "examples": [
+        {
+          "text": "내 이름은 지환이야"
+        },
+        {
+          "text": "나야 나"
+        },
+        {
+          "text": "나는 정식이야"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "하이"
+        },
+        {
+          "text": "안녕하세요"
+        },
+        {
+          "text": "안녕"
+        }
+      ],
+      "description": "사용자가 인사 받아주는 인텐트"
+    },
+    {
+      "intent": "위키검색",
+      "examples": [
+        {
+          "text": "위키"
+        },
+        {
+          "text": "위키야"
+        },
+        {
+          "text": "위키에게"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "문화공간검색",
+      "examples": [
+        {
+          "text": "영등포구"
+        },
+        {
+          "text": "강남구"
+        },
+        {
+          "text": "강남구 아무거나 알려줘"
+        },
+        {
+          "text": "공연장 알려줘"
+        },
+        {
+          "text": "관악구 도서관 알려줘"
+        },
+        {
+          "text": "그냥 아무거나 알려줘"
+        },
+        {
+          "text": "기념관 알려줘"
+        },
+        {
+          "text": "동작구"
+        },
+        {
+          "text": "동작구 문화예술회관 알려줘"
+        },
+        {
+          "text": "박물관 알려줘"
+        },
+        {
+          "text": "박물관/기념관 알려줘"
+        },
+        {
+          "text": "서초구 미술관 알려줘"
+        },
+        {
+          "text": "영등포구 알려줘"
+        },
+        {
+          "text": "종로구 영화관 알려줘"
+        },
+        {
+          "text": "송파구 경기장 띄워줘"
+        },
+        {
+          "text": "중구 미술관 보여줘"
+        },
+        {
+          "text": "서초구 기념관 보여줘라"
+        },
+        {
+          "text": "용산구 공연장 보여줘"
+        }
+      ],
+      "description": "문화공간을 지역구와 장르에 따라 검색하는 인텐트"
+    },
+    {
+      "intent": "서울시TOP10",
+      "examples": [
+        {
+          "text": "서울시 TOP10 알려줘"
+        },
+        {
+          "text": "탑텐 알려줘"
+        },
+        {
+          "text": "TOP10 뭐야"
+        },
+        {
+          "text": "TOP10 정보"
+        },
+        {
+          "text": "서울시 탑텐 가족 여행"
+        },
+        {
+          "text": "탑텐 한류체험"
+        },
+        {
+          "text": "탑텐 서울관광명소 알려줘"
+        },
+        {
+          "text": "서울 나이트라이프 탑텐 보여줘"
+        },
+        {
+          "text": "도보해설관광 TOP10 뭐야"
+        },
+        {
+          "text": "서울 쇼핑 탑텐 알려주세요"
+        },
+        {
+          "text": "서울전통문화체험 탑10 뭐야"
+        },
+        {
+          "text": "야외활동 탑텐 알려줘"
+        }
+      ],
+      "description": "서울시의 TOP 10 문화정보 소개 인텐트"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "regionName",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "송파구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "금천구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "관악구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "은평구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "강서구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "영등포구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "성동구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "종로구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서초구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "강남구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "중랑구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "노원구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "용산구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "중구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "도봉구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "동대문구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "구로구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "강북구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서대문구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "강동구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "광진구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "마포구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "성북구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "양천구",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "동작구",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "문화시설정보_교통",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "callback_query_traffic",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "callback_query_subway",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "callback_query_bus",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "TOP10_category",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "도보해설관광",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서울관광명소",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서울나이트라이프",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서울전통",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서울쇼핑",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "한류체험",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "야외활동",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "가족여행",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "서울의불빛",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "TOP10",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "10TOP",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "TOP10",
+          "synonyms": [
+            "탑텐"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "탑텐",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "탑10",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "문화시설정보_나머지",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "callback_query_other",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "봇소개",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "너에 대해",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "너",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "너는",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "당신",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "니 소개",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "너 소개",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "자기소개",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "니",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "문화시설정보_지도",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "callback_query_map",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "장르",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "박물관",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "미술관",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "공연장",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "콘서트",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "기념관",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "도서관",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "문화원",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "문화예술회관",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "봇소개_나이_사는곳",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "사는곳",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "태어난곳",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "어디살아",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "몇살",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "나이",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "어디야",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "main",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "/start",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "기본화면",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "처음화면",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "초기화면",
+          "synonyms": [
+            "initial"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "메인화면",
+          "synonyms": [
+            "main"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "ko",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "6a16bd76-f545-4be9-953b-211b1e0b1a6c",
+  "webhooks": [
+    {
+      "url": "https://us-south.functions.cloud.ibm.com/api/v1/namespaces/vkdnjznd%40naver.com_dev/actions/woorijo_culture_space_wiki_info?blocking=true",
+      "name": "main_webhook",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Basic NmQ5ODVmNTQtYjJkYi00YTEyLThiNzYtYTE5ZDMyYjg1YjUwOm1McFA2ck01VmZxdnFGZWdsNzZWa1hSSXd5SDg1VUlVNzFBZ01UT2pyTXBLd2h5Y1hlMlVuREFLNnB3MWZVeHM="
+        }
+      ]
+    }
+  ],
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1570431416481",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1570431416490",
+      "previous_sibling": "handler_1_1570431416490"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_4_1570431416481",
+      "context": {
+        "region": "@regionName"
+      },
+      "conditions": "@regionName",
+      "event_name": "input",
+      "dialog_node": "handler_1_1570431416490"
+    },
+    {
+      "type": "frame",
+      "title": "장르 입력",
+      "parent": "node_4_1570174313054",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "node": "culture_genre",
+            "genre": "<?$genre?>"
+          },
+          "result_variable": "culture_genre"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@장르",
+      "dialog_node": "node_2_1570431478746",
+      "previous_sibling": "node_3_1570214051309"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1570174313054",
+      "variable": "$region",
+      "dialog_node": "slot_3_1570196298894",
+      "previous_sibling": "node_2_1570431478746"
+    },
+    {
+      "type": "frame",
+      "title": "지역구 입력",
+      "parent": "node_4_1570174313054",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "node": "culture_gu",
+            "region": "<?$region?>"
+          },
+          "result_variable": "culture_gu"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@regionName",
+      "dialog_node": "node_3_1570214051309",
+      "previous_sibling": "node_4_1570428700898"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1570174313054",
+      "variable": "$genre",
+      "dialog_node": "slot_10_1570427157219",
+      "previous_sibling": "slot_3_1570196298894"
+    },
+    {
+      "type": "frame",
+      "title": "지역구_장르 입력",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$region?>의 <?$genre?> 시설정보를 가져올게요!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_4_1570174313054",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1570434376213"
+      },
+      "conditions": "@regionName && @장르",
+      "dialog_node": "node_4_1570428700898"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1570431238770",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1570431238780",
+      "previous_sibling": "handler_7_1570431238780"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_9_1570431238770",
+      "context": {
+        "region": "@regionName"
+      },
+      "conditions": "@regionName",
+      "event_name": "input",
+      "dialog_node": "handler_7_1570431238780"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_4_1570585614399",
+      "parent": "node_7_1570584886385",
+      "conditions": "anything_else",
+      "dialog_node": "response_4_1570585614399",
+      "previous_sibling": "response_1_1570585612478"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_1_1570585612478",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$top10_info.response.result.message?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_7_1570584886385",
+      "conditions": "$top10_info",
+      "dialog_node": "response_1_1570585612478"
+    },
+    {
+      "type": "frame",
+      "title": "장르 입력",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$region?>의 <?$genre?> 시설정보를 가져올게요!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_3_1570214051309",
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "": ""
+          },
+          "result_variable": "culture_gu_genre"
+        },
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1570434376213"
+      },
+      "conditions": "@장르",
+      "dialog_node": "node_5_1570435295180",
+      "previous_sibling": "response_2_1570511191541"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1570214051309",
+      "variable": "$region",
+      "dialog_node": "slot_4_1570431416481",
+      "previous_sibling": "node_5_1570435295180"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_2_1570511191541",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$region?> 문화 시설정보를 가져올게요!원하시는 장르를 입력해주세요. <?$region?>에는 <? $culture_gu.response.result.message ?> 장르가 있어요."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_3_1570214051309",
+      "conditions": "$culture_gu",
+      "dialog_node": "response_2_1570511191541"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_10_1570427157219",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1570427157223",
+      "previous_sibling": "handler_3_1570427157223"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_10_1570427157219",
+      "context": {
+        "genre": "@장르"
+      },
+      "conditions": "@장르",
+      "event_name": "input",
+      "dialog_node": "handler_3_1570427157223"
+    },
+    {
+      "type": "standard",
+      "title": "TOP10 가져오기",
+      "parent": "node_9_1570584239284",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "node": "callback_top_cate",
+            "category": "<?$TOP10_category?>"
+          },
+          "result_variable": "top10_info"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@TOP10_category",
+      "dialog_node": "node_7_1570584886385",
+      "previous_sibling": "slot_3_1570606397026"
+    },
+    {
+      "type": "slot",
+      "parent": "node_9_1570584239284",
+      "variable": "$TOP10_category",
+      "dialog_node": "slot_3_1570606397026"
+    },
+    {
+      "type": "frame",
+      "title": "서울시TOP10_카테고리",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "서울시 <?$TOP10_category?> TOP 10 정보를 가져올게요!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1570584130463",
+      "context": {},
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "@TOP10_category",
+      "dialog_node": "node_9_1570584239284",
+      "previous_sibling": "response_4_1570586134523"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_4_1570586134523",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "서울시 TOP 10 정보를 알려드릴게요! 아래 카테고리중 원하시는 카테고리를 입력해주세요. <?$top10.response.result.message?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1570584130463",
+      "conditions": "$top10",
+      "dialog_node": "response_4_1570586134523"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_4_1570431416490",
+      "output": {},
+      "parent": "slot_3_1570431478750",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1570431478750",
+      "previous_sibling": "handler_4_1570431478750"
+    },
+    {
+      "type": "event_handler",
+      "title": "handler_1_1570431416490",
+      "output": {},
+      "parent": "slot_3_1570431478750",
+      "context": {
+        "genre": "@장르"
+      },
+      "conditions": "@장르",
+      "event_name": "input",
+      "dialog_node": "handler_4_1570431478750"
+    },
+    {
+      "type": "frame",
+      "title": "지역구 입력",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$region?>의 <?$genre?> 시설정보를 가져올게요!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1570431478746",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1570434376213"
+      },
+      "conditions": "@regionName",
+      "dialog_node": "node_3_1570491618355",
+      "previous_sibling": "response_9_1570510958210"
+    },
+    {
+      "type": "slot",
+      "title": "slot_4_1570431416481",
+      "output": {},
+      "parent": "node_2_1570431478746",
+      "variable": "$genre",
+      "dialog_node": "slot_3_1570431478750",
+      "previous_sibling": "node_3_1570491618355"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_9_1570510958210",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$genre?> 시설정보를 가져올게요!원하시는 지역구를 입력해주세요. <?$genre?>은 <?$culture_genre.response.result.message?> 지역에 있어요."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "parent": "node_2_1570431478746",
+      "conditions": "$culture_genre",
+      "dialog_node": "response_9_1570510958210"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1570431329793",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1570431329797",
+      "previous_sibling": "handler_9_1570431329797"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_4_1570431329793",
+      "context": {
+        "genre": "@장르"
+      },
+      "conditions": "@장르",
+      "event_name": "input",
+      "dialog_node": "handler_9_1570431329797"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1570491646992",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1570491647013",
+      "previous_sibling": "handler_3_1570491647013"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_2_1570491646992",
+      "context": {
+        "region": "@regionName"
+      },
+      "conditions": "@regionName",
+      "event_name": "input",
+      "dialog_node": "handler_3_1570491647013"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1570491523038",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1570491523065",
+      "previous_sibling": "handler_7_1570491523065"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_4_1570491523038",
+      "context": {
+        "genre": "@장르"
+      },
+      "conditions": "@장르",
+      "event_name": "input",
+      "dialog_node": "handler_7_1570491523065"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1570428700898",
+      "variable": "$genre",
+      "dialog_node": "slot_4_1570431329793",
+      "previous_sibling": "slot_9_1570431238770"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1570428700898",
+      "variable": "$region",
+      "dialog_node": "slot_9_1570431238770",
+      "previous_sibling": "node_4_1570434376213"
+    },
+    {
+      "type": "standard",
+      "title": "문화시설 가져오기",
+      "parent": "node_4_1570428700898",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "node": "culture_all",
+            "genre": "<?$genre?>",
+            "region": "<?$region?>"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "dialog_node": "node_4_1570434376213"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_3_1570606397026",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1570606397035",
+      "previous_sibling": "handler_8_1570606397035"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_3_1570606397026",
+      "context": {
+        "TOP10_category": "@TOP10_category"
+      },
+      "conditions": "@TOP10_category",
+      "event_name": "input",
+      "dialog_node": "handler_8_1570606397035"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_6_1570434413818",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<? $webhook_result_1.response.result.message ?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1570434376213",
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_6_1570434413818"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1570491618355",
+      "variable": "$region",
+      "dialog_node": "slot_2_1570491646992"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_3_1570196298894",
+      "event_name": "focus",
+      "dialog_node": "handler_7_1570196298900",
+      "previous_sibling": "handler_1_1570196298900"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_3_1570196298894",
+      "context": {
+        "region": "@regionName"
+      },
+      "conditions": "@regionName",
+      "event_name": "input",
+      "dialog_node": "handler_1_1570196298900"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1570435295180",
+      "variable": "$genre",
+      "dialog_node": "slot_4_1570491523038",
+      "previous_sibling": "response_5_1570511751126"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_5_1570511751126",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<?$region?>의 <?$genre?> 데이터를 가져올게요!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1570435295180",
+      "disabled": true,
+      "conditions": "",
+      "dialog_node": "response_5_1570511751126"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_7_1570608704048",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "위키도 모르나 봐요.."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1570608670626",
+      "conditions": "anything_else",
+      "dialog_node": "response_7_1570608704048",
+      "previous_sibling": "response_2_1570608702470"
+    },
+    {
+      "type": "response_condition",
+      "title": "response_2_1570608702470",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "위키가 대답해줬어요! <?$wiki.response.result.message?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1570608670626",
+      "conditions": "$wiki",
+      "dialog_node": "response_2_1570608702470"
+    },
+    {
+      "type": "standard",
+      "title": "서울시TOP10검색",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "node": "callback_top"
+          },
+          "result_variable": "top10"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_9_1570584239284"
+      },
+      "conditions": "#서울시TOP10",
+      "dialog_node": "node_3_1570584130463",
+      "previous_sibling": "node_4_1570174313054"
+    },
+    {
+      "type": "standard",
+      "title": "자기소개_나이",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "전 방금 구름위에서 태어났어요. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "  @봇소개_나이_사는곳",
+      "dialog_node": "node_1_1570604878015",
+      "previous_sibling": "node_2_1570168888684"
+    },
+    {
+      "type": "standard",
+      "title": "위키검색",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "node": "wiki",
+            "wiki_sentence": "<? input.text ?>"
+          },
+          "result_variable": "wiki"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#위키검색",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1570608670626",
+      "previous_sibling": "node_3_1570584130463"
+    },
+    {
+      "type": "standard",
+      "title": "문화공간검색",
+      "actions": [],
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#문화공간검색",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1570174313054",
+      "previous_sibling": "node_9_1570582109382"
+    },
+    {
+      "type": "standard",
+      "title": "사용자인사",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "네 안녕하세요.\n저는 서울시의 문화정보를 알려드리는 Seoul Culture Vot 입니다!\n문화정보를 검색하시려면 지역구와 장르를 입력해주세요!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "#사용자인사 &&   !@봇소개_나이_사는곳 && !@TOP10_category",
+      "dialog_node": "node_9_1570582109382",
+      "previous_sibling": "node_1_1570604878015"
+    },
+    {
+      "type": "standard",
+      "title": "자기소개_설명",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "저는 서울시의 문화정보를 알려드리는 Seoul Culture Vot 입니다!\n원하시는 지역구와 장르를 입력해주세요."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "#자기소개 &&        @봇소개 && !@봇소개_나이_사는곳",
+      "dialog_node": "node_2_1570168888684",
+      "previous_sibling": "node_10_1570169885329"
+    },
+    {
+      "type": "standard",
+      "title": "기타",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "저는 잘 모르겠는데, 제 친구 위키는 알고 있을지 몰라요.\n위키야 키워드로 위키에게 물어보세요! "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "기타",
+      "previous_sibling": "node_4_1570608670626"
+    },
+    {
+      "type": "standard",
+      "title": "환영인사",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "안녕하세요! 다양한 서울시의 문화 공간정보를 알려드릴게요!\n지역구나 원하시는 문화 장르를 입력해보세요.\n서울시 탑텐 키워드로 서울시의 즐길거리 TOP 10 정보도 같이 보실 수 있어요."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "welcome || @main",
+      "dialog_node": "node_10_1570169885329"
+    }
+  ],
+  "workspace_id": "6a16bd76-f545-4be9-953b-211b1e0b1a6c",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
