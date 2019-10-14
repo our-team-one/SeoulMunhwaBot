@@ -1,0 +1,9 @@
+docker run --rm -v "%cd%:/tmp" ibmfunctions/action-python-v3.7 bash -c "cd tmp && virtualenv virtualenv && source virtualenv/bin/activate && pip install selenium"
+
+
+zip -r helloPython.zip virtualenv C:\__main__.py
+
+
+ibmcloud fn action create helloPython --kind python:3.7 helloPython.zip
+
+ibmcloud fn action invoke --result helloPython
