@@ -1,0 +1,294 @@
+[
+    {
+        "id": "665df93e.a5da08",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b775da1f.21c7c8",
+        "type": "telegram sender",
+        "z": "665df93e.a5da08",
+        "name": "",
+        "bot": "863f06a2.cc1f98",
+        "x": 1399.5240058898926,
+        "y": 329.9524116516113,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aeb1d9b4.ff7158",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "Prepare for Conversation",
+        "func": "// inline-keyboard query 일 경우\nif (msg.payload.type === \"callback_query\"){\n    text = msg.payload.content\n    return msg\n    \n    /*if (text == \"a\"){\n        \n    }*/\n    \n}\n// 입력 메시지 일 경우\nelse{\n    msg.chatId = msg.payload.chatId;\n    msg.payload = msg.payload.content;\n    return msg\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 205.00009155273438,
+        "y": 323.3333930969238,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38dfa190.3a1d8e",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "Text Sender",
+        "func": "html_p = /(<([^>]+)>)/ig\nbutton_p = /<button.*button>/ig\nlink_p = /<a.*href.*=.*'>/ig\n\nlength = msg.payload.output.text.length\n\nif (length == 2)\n    text = msg.payload.output.text[1]\nelse{\n    text = msg.payload.output.text[0]\n    clean_text = text\n    msg.payload = {\n    chatId : msg.chatId,\n    type : \"message\",\n    content : clean_text};\n  \n    return msg\n}\n\nif (html_p.test(text)){\n    link_text = link_p.exec(text)[0]\n    var lstart = link_text.indexOf(\"'htt\");\n    var end = link_text.indexOf(\"'\", lstart+1);\n    var link_url = link_text.substring(lstart+1, end)\n    \n    \n    clean_text = text.replace(button_p, \"\");\n    clean_text = clean_text.replace(html_p, \"\");\n    \n    start = clean_text.indexOf('[\"')\n    end = clean_text.indexOf('\"]', start + 1)\n    clean_text = clean_text.substring(start + 2, end)\n    \n    add_text = \"은 어떠신가요?\\n\" + clean_text +\n    \"의 사진도 함께 전송해드렸어요!\"\n    \n    if (lstart != -1){\n        clean_text = clean_text + add_text + \"\\n\" +\n        \"자세한 정보는 홈페이지 \" + link_url +\n        \" 를 참고해보세요!\"\n    }\n    else{\n        clean_text = clean_text + add_text + \"\\n\" +\n        \"이 기관은 홈페이지가 없네요.\"\n    }\n}\nelse{\n    clean_text = text\n}\n\nmsg.payload = {\n  chatId : msg.chatId,\n  type : \"message\",\n  content : clean_text};\n  \nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1147.3336868286133,
+        "y": 213.66679096221924,
+        "wires": [
+            [
+                "b775da1f.21c7c8"
+            ]
+        ]
+    },
+    {
+        "id": "7b8b2072.0a3e7",
+        "type": "telegram receiver",
+        "z": "665df93e.a5da08",
+        "name": "",
+        "bot": "863f06a2.cc1f98",
+        "saveDataDir": "",
+        "x": 156.66668701171875,
+        "y": 175.66666984558105,
+        "wires": [
+            [
+                "57fb3c2b.7ae6d4"
+            ],
+            [
+                "57fb3c2b.7ae6d4"
+            ]
+        ]
+    },
+    {
+        "id": "430a11e7.aa184",
+        "type": "watson-conversation-v1",
+        "z": "665df93e.a5da08",
+        "name": "",
+        "workspaceid": "6a16bd76-f545-4be9-953b-211b1e0b1a6c",
+        "multiuser": false,
+        "context": true,
+        "empty-payload": false,
+        "default-endpoint": false,
+        "service-endpoint": "https://gateway.watsonplatform.net/assistant/api",
+        "timeout": "",
+        "optout-learning": false,
+        "x": 487.66675567626953,
+        "y": 259.3333406448364,
+        "wires": [
+            [
+                "8dd694b6.365c18"
+            ]
+        ]
+    },
+    {
+        "id": "3e578be3.4dee74",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "Img Sender",
+        "func": "html_p = /(<([^>]+)>)/ig\nimg_p = /<img[^>]*src.*=[\\\"']?[^>]*>/ig\n\nlength = msg.payload.output.text.length\nif (length == 2){\n    text = msg.payload.output.text[1]\n}\nelse{\n    return null\n}\n\nif (html_p.test(text)){\n    text = img_p.exec(text)[0]\n    start = text.indexOf(\"'htt\");\n    end = text.indexOf(\"'\", start+1);\n    var img_url = text.substring(start+1, end)\n    \n    msg.payload = {\n    chatId : msg.chatId,\n    type : \"photo\",\n    content : img_url\n    };\n}\nelse{\n    return null\n}\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1147.0001831054688,
+        "y": 287.0000247955322,
+        "wires": [
+            [
+                "b775da1f.21c7c8"
+            ]
+        ]
+    },
+    {
+        "id": "444f5287.6ddfac",
+        "type": "debug",
+        "z": "665df93e.a5da08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 932.444694519043,
+        "y": 462.22230529785156,
+        "wires": []
+    },
+    {
+        "id": "8dd694b6.365c18",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "MsgSender",
+        "func": "var intent\n\ntry{\n    intent = msg.payload.intents[0].intent\n}\ncatch (e){\n    if (e.name === 'TypeError' || e.name === 'ReferenceError')\n        return [null, msg];\n}\n\nreturn [msg, null]\n\n/*\nif (intent == \"문화공간검색\"){\n    return [msg, null]\n}*/",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 747.3333473205566,
+        "y": 218.66669368743896,
+        "wires": [
+            [
+                "444f5287.6ddfac",
+                "38dfa190.3a1d8e",
+                "3e578be3.4dee74"
+            ],
+            [
+                "26ea6fbf.edcde"
+            ]
+        ]
+    },
+    {
+        "id": "26ea6fbf.edcde",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "Null Sender",
+        "func": "text = msg.payload.output.text[0]\n\nmsg.payload = {\n  chatId : msg.chatId,\n  type : \"message\",\n  content : text};\n  \nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1147.333366394043,
+        "y": 348.0000705718994,
+        "wires": [
+            [
+                "b775da1f.21c7c8"
+            ]
+        ]
+    },
+    {
+        "id": "8af942c1.49033",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "inline keyboard message",
+        "func": "context.global.keyboard = {pending : true, messageId : msg.payload.messageId};\n\nvar opts = {\n    reply_to_message_id : msg.payload.messageId,\n    reply_markup : JSON.stringify({\n        \"inline_keyboard\" : [[\n            {\n                \"text\" : \"YES\",\n                \"callback_data\" : \"YES\"\n            },\n            {\n                \"text\" : \"NO\",\n                \"callback_data\" : \"cq_*aa\"\n            }\n            ],\n            [{\n                \"text\" : \"long\",\n                \"callback_data\" : \"long\"\n            }]\n        ]\n    })\n};\n\nmsg.payload.content = \"Are\";\nmsg.payload.options = opts;\n\n\nreturn [ msg ];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 546.3334693908691,
+        "y": 711.0001034736633,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fb518807.8dbac8",
+        "type": "telegram event",
+        "z": "665df93e.a5da08",
+        "name": "",
+        "bot": "863f06a2.cc1f98",
+        "event": "callback_query",
+        "autoanswer": false,
+        "x": 232.77780151367188,
+        "y": 557.777829170227,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b914b7ad.dec128",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "evaluate callback query",
+        "func": "if (msg.payload.content === \"YES\"){\n    msg.payload.type = \"deleteMessage\";\n    msg.payload.content = context.global.keyboard.messageId\n    context.global.keyboard.messageId = null;\n    msg.payload.content = \"callback_query_test\"\n    \n    return [ null, msg ];\n}\nelse\n{\n    var show_alert = false;\n    msg.payload.options = show_alert;\n\n    return [ msg, null ];\n}",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 538.7779235839844,
+        "y": 630.1111035346985,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d12a548.a69fba8",
+        "type": "telegram sender",
+        "z": "665df93e.a5da08",
+        "name": "",
+        "bot": "863f06a2.cc1f98",
+        "x": 920.0000228881836,
+        "y": 597.7778739929199,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1e57eaf3.f25915",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "save messageId",
+        "func": "context.global.keyboard.messageId = msg.payload.sentMessageId;\n\nreturn [ msg ];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1676.889003753662,
+        "y": 326.2223424911499,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2eed1efe.8c4442",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "reset inline keyboard message",
+        "func": "var messageId = context.global.keyboard.messageId;\n\nvar reply_markup = JSON.stringify({\n    \"inline_keyboard\" : [[\n            {\n                \"text\" : \"교통정보 알려줘\",\n                \"callback_data\" : \"문화교통정보\"\n            },\n            {\n                \"text\" : \"지도 보여줘\",\n                \"callback_data\" : \"문화지도\"\n            },\n            {\n                \"text\" : \"다른거 보여줘\",\n                \"callback_data\" : \"문화교체\"\n            }\n            ],\n            [\n            {\n                \"text\" : \"메인화면으로\",\n                \"callback_data\" : \"메인화면\"\n            }]\n            \n        ]\n    });\n\nvar options = {\n    chat_id : msg.payload.chatId,\n    reply_markup : reply_markup,\n    message_id : messageId\n};\n\nmsg.payload.type = 'editMessageReplyMarkup';\nmsg.payload.content = reply_markup;\nmsg.payload.options = options;\n\n\nreturn [ msg ];",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 556.0000152587891,
+        "y": 577.0000152587891,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "573d01db.1f7a1",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "Button Sender",
+        "func": "button_p = /<button.*button>/ig\ntext = msg.payload.output.text[1]\n\nif (button_p.test(text)){\n    start = text.indexOf(\"[\");\n    end = text.indexOf(\"]\", start+1);\n    var img_url = text.substring(start+1, end)\n    \n    context.global.keyboard = {pending : true, messageId : msg.payload.messageId};\n\n    var opts = {\n        reply_to_message_id : msg.payload.messageId,\n        reply_markup : JSON.stringify({\n            \"inline_keyboard\" : [[\n                {\n                    \"text\" : \"YES\",\n                    \"callback_data\" : \"YES\"\n                },\n                {\n                    \"text\" : \"NO\",\n                    \"callback_data\" : \"cq_*aa\"\n                }\n                ],\n                [{\n                    \"text\" : \"long\",\n                    \"callback_data\" : \"long\"\n                }]\n            ]\n        })\n    };\n\n\nmsg.payload.content = \"Are\";\nmsg.payload.options = opts;\n\nreturn [ msg ];\n\n}\nelse{\n    return null\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1152.1481323242188,
+        "y": 408.0000104904175,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "57fb3c2b.7ae6d4",
+        "type": "function",
+        "z": "665df93e.a5da08",
+        "name": "Prepare for Conversation",
+        "func": "msg.chatId = msg.payload.chatId;\nmsg.payload = msg.payload.content;\n\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 262.00000381469727,
+        "y": 410.0000114440918,
+        "wires": [
+            [
+                "430a11e7.aa184"
+            ]
+        ]
+    },
+    {
+        "id": "863f06a2.cc1f98",
+        "type": "telegram bot",
+        "z": "",
+        "botname": "SeoulCultureVot_Bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "verboselogging": false
+    }
+]
